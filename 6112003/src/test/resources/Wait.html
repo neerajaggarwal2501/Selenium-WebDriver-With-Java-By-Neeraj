@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wait</title>
+    <style>
+        button {
+            background: blue;
+            padding: 8px;
+            text-align: left;
+            width: 350px;
+            vertical-align: middle;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+
+
+        function dateNow(string) {
+            var y = document.createElement("h4")
+            let newDate = new Date()
+            var z = document.createTextNode(string + newDate.toLocaleString())
+            y.appendChild(z)
+            var logger = document.getElementById('logger')
+            logger.appendChild(y)
+        }
+
+
+        function randomNumber1(max, min) {
+            dateNow("Clicked Question 1 at ")
+            var i = (Math.floor(Math.random() * (max - min + 1) + min)) * 1000;
+            console.log("Answer 1 will be displayed in " + i / 1000 + " seconds");
+            setTimeout(getCapitalOfIndia, i);
+        }
+
+
+
+        function randomNumber2(max, min) {
+            dateNow("Clicked Question 2 at ")
+            var i = (Math.floor(Math.random() * (max - min + 1) + min)) * 1000;
+            console.log("Answer 2 will be displayed in " + i / 1000 + " seconds");
+            setTimeout(getCapitalOfJapan, i);
+        }
+
+        function getCapitalOfIndia() {
+            var x = document.createElement("BUTTON");
+            var t = document.createTextNode("Delhi");
+            dateNow('Answered Question 1 at ')
+            x.append(t);
+
+            x.id = "Answer_India_Delhi";
+            document.getElementById("Answer_India").appendChild(x);
+        }
+
+        function getCapitalOfJapan() {
+            var x = document.createElement("BUTTON");
+            var t = document.createTextNode("Tokyo");
+            dateNow('Answered Question 2 at ')
+            x.appendChild(t);
+            x.style.backgroundColor = "lightgreen"
+            x.id = "Answer_Japan_Tokyo";
+            document.getElementById("Answer_Japan").appendChild(x);
+        }
+
+    </script>
+    <br>
+    <br>
+
+    <!-- <hr style="clear:both;"> -->
+    <div>
+        <button id="Question_India" onclick="randomNumber1(5,10);">What is the capital
+            of India.<br>
+            Click me to show answer. <br>It will take 5 to 10 seconds for answer button to appear
+        </button>
+        <span id="Answer_India"> </span>
+
+        <hr>
+        </hr>
+
+
+        <button id="Question_Japan" onclick="randomNumber2(10,15);" style="background:lightgreen;">What is the capital
+            of
+            Japan.<br>
+            Click me to show answer. <br /> It will take 10 to 15 seconds for answer button to appear</button>
+        <span id="Answer_Japan"> </span>
+
+
+        <div id="logger">
+            <br>
+        </div>
+
+        <!-- <hr style="clear:both;"> -->
+
+</body>
+
+</html>
