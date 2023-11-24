@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.basket {
+  width: 350px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+button {
+            background: lightgreen;
+            padding: 8px;
+            text-align: left;
+            width: 10rem;
+            vertical-align: middle;
+            border-radius: 15px;
+        }
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<p>
+<br>
+<br>
+</p>
+<p><h3>Drag and Drop Demo by <b> https://www.youtube.com/@neerajaggarwal2501<b></h3></p>
+
+<div id="Target_Apple" class = "basket" ondrop="drop(event)" ondragover="allowDrop(event)">Apple</div>
+<div id="Target_Mango" class = "basket" ondrop="drop(event)" ondragover="allowDrop(event)">Mango</div>
+<div id="Target_Orange" class = "basket" ondrop="drop(event)" ondragover="allowDrop(event)">Orange</div>
+<p>
+<br>
+</p>
+<button id = "Source_Apple" draggable="true" ondragstart="drag(event)" width="336" height="69">Apple</button>
+<button id = "Source_Mango" draggable="true" ondragstart="drag(event)" width="336" height="69">Mango</button>
+<button id = "Source_Orange" draggable="true" ondragstart="drag(event)" width="336" height="69">Orange</button>
+
+</body>
+</html>
+
