@@ -1,4 +1,4 @@
-package demo;
+package demo.waits;
 import java.time.Duration;
 import java.util.Date;
 
