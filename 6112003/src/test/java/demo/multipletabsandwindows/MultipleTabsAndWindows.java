@@ -1,4 +1,4 @@
-package multipletabsandwindows;
+package demo.multipletabsandwindows;
 
 import java.util.Set;
 
