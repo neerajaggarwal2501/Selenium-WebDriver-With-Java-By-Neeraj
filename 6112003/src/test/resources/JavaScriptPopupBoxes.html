@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Three types of JavaScript popup boxes</h1>
+<h2>[1] Alert Box</h2>
+<button onclick="myFunction1()">Alert Box</button>
+<p id="JSAlertBoxdemo" class=output></p>
+<br><br>
+
+
+<h2>[2]  Confirm Box</h2>
+<button onclick="myFunction2()">Confirm Box</button>
+<p id="JSConfirmBoxdemo" class=output></p>
+<br><br>
+
+
+<h2>[3]  Prompt Box</h2>
+<button onclick="myFunction3()">Prompt Box</button>
+<p id="JSPromptBoxDemo" class=output></p>
+
+
+<script>
+function myFunction1() {
+   alert("Hi! I am a Alert Box");
+	document.getElementById("JSAlertBoxdemo").innerText = "You pressed OK!";	
+}
+function myFunction2() {
+  var txt;
+  if (confirm("Press a button!")) {
+    text = "You pressed OK!";
+  } else {
+    text = "You pressed Cancel!";
+  }
+  document.getElementById("JSConfirmBoxdemo").innerText = text;
+}
+function myFunction3() {
+  let text;
+  let person = prompt("Please enter your name:", "Mickey");
+  if (person == null || person == "") {
+    text = "You pressed Cancel!";
+  } else {
+    text = "Hello " + person + "! How are you today?";
+  }
+  document.getElementById("JSPromptBoxDemo").innerHTML = text;
+}
+
+</script>
+<style>
+.output {
+  width: 350px;
+  height: 10px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+button {
+            background: lightgreen;
+            padding: 8px;
+            text-align: left;
+            width: 10rem;
+            vertical-align: middle;
+            border-radius: 15px;
+        }
+</style>
+</body>
+</html>
