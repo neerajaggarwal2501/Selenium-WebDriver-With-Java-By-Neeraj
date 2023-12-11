@@ -15,7 +15,7 @@ public class JavaScriptExecutorInterfaceDemo_Click {
 		WebElement button1 = driver.findElement(By.id("Question_India"));
 		Thread.sleep(3000);
 		
-		//Perform Button click using JavaScript
+		//Perform Button click using JavaScriptExecutor 
 		jsExecutor.executeScript("document.getElementById('Question_India').click()");    // Call JSExecutor by passing 1 argument
 		Thread.sleep(3000);
 
@@ -27,7 +27,7 @@ public class JavaScriptExecutorInterfaceDemo_Click {
 		//so we need to find element again or else we will throw exception :- "StaleElementReferenceException"
 		button1 = driver.findElement(By.id("Question_India"));  
 		
-		//Perform Button click using JavaScript
+		//Perform Button click using JavaScriptExecutor
 		jsExecutor.executeScript("arguments[0].click();",button1);					// Call JSExecutor by passing multiple arguments
 	}
 }
