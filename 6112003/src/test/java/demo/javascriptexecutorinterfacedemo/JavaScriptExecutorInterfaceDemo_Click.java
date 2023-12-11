@@ -23,7 +23,8 @@ public class JavaScriptExecutorInterfaceDemo_Click {
 		jsExecutor.executeScript("location.reload()"); 
 		Thread.sleep(3000);
 		
-		// Since we have refreshed the page, so we need to find element again
+		//Since we have refreshed the page, 
+		//so we need to find element again or else we will throw exception :- "StaleElementReferenceException"
 		button1 = driver.findElement(By.id("Question_India"));  
 		
 		//Perform Button click using JavaScript
