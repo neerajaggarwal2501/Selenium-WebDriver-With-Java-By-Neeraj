@@ -1,0 +1,41 @@
+<html>
+<head>
+    <style>
+        button {
+            background: lightgreen;
+            padding: 8px;
+            text-align: left;
+            width: 150px;
+            vertical-align: middle;
+            border-radius: 15px;
+        }
+
+        label{
+
+            font-size: large;
+        }
+        #Answer{
+            font-size: large;
+        }
+
+    </style>
+    <title>Application 1</title>
+</head>
+<body>
+    <script>
+        function showAnswer() {
+            console.log("sss");
+            document.getElementById("Answer").innerHTML="The capital of India is New Delhi";
+            document.getElementById("Question_India").disabled = true
+        }
+    </script>
+<br>
+<br>
+
+
+    <label for="Question">What is the capital of India?</label>
+    <button id="Question_India" onclick="showAnswer();" style="background:lightgreen;">Show Answer</button>
+<br><br>
+    <span  id = "Answer"> </span>
+</body>
+</html>
