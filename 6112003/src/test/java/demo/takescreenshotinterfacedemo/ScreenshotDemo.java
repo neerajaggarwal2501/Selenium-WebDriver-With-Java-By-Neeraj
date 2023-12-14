@@ -21,13 +21,13 @@ public class ScreenshotDemo {
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofMinutes(1));
 		
 		// Full Screenshot
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		Files.copy(scrFile.toPath(), Paths.get(System.getProperty("user.dir"),"screenshots",scrFile.getName()));
+		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		Files.copy(srcFile.toPath(), Paths.get(System.getProperty("user.dir"),"screenshots",srcFile.getName()));
 
 		// Screenshot of a WebElement - button1
 		WebElement button1 = driver.findElement(By.xpath("//button[@id='Source_Apple']"));
-		File scrFile1 = ((TakesScreenshot) button1).getScreenshotAs(OutputType.FILE);
-		Files.copy(scrFile1.toPath(), Paths.get(System.getProperty("user.dir"),"screenshots",scrFile1.getName()));
+		File srcFile1 = ((TakesScreenshot) button1).getScreenshotAs(OutputType.FILE);
+		Files.copy(srcFile1.toPath(), Paths.get(System.getProperty("user.dir"),"screenshots",srcFile1.getName()));
 
 		Thread.sleep(2000);
 		driver.quit();
