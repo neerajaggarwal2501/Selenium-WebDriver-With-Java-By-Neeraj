@@ -19,7 +19,7 @@ public class ExplicitWait_WebDriverWaitDemo {
 		// 15 seconds specified here is the max waiting time. The actual waiting time is the time in which the specified condition is met.
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));   //---->Explicit Wait or WebDriverWait Line 1
 
-		driver.get("file:///C:/Users/NeerajAggarwal/Desktop/Wait.html");
+		driver.get("C:/Users/NeerajAggarwal/git/SeleniumYT/6112003/src/test/resources/Wait.html");
 
 		Date d1 = new Date();
 		driver.findElement(By.id("Question_India")).click();
@@ -36,7 +36,7 @@ public class ExplicitWait_WebDriverWaitDemo {
 		// and move to next execution step.
 		Date d3 = new Date();
 		driver.findElement(By.id("Question_Japan")).click();
-		WebElement capitalOfJapan = wait.until(ExpectedConditions.elementToBeClickable(By.id("Answer_Japan_Tokyo1")));
+		WebElement capitalOfJapan = wait.until(ExpectedConditions.elementToBeClickable(By.id("Answer_Japan_Tokyo")));
 		Date d4 = new Date();
 		System.out.println(d3 + "  " + d4 + " " + capitalOfJapan.getText() + "  " );
 
