@@ -19,7 +19,7 @@ public class ScrollBarsDemo {
 		WebElement button2 = driver.findElement(By.xpath("//button[text()='J']"));
 		
 		Thread.sleep(4000);
-		actions.scrollToElement(button1).perform();
+		actions.scrollToElement(button1).perform();   // NOTE: This API will not do Mouse Hover. 
 		
 		Thread.sleep(4000);
 		actions.scrollToElement(button2).perform();
