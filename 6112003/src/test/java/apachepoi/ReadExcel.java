@@ -1,42 +1,36 @@
 package apachepoi;
+
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Path;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-//https://www.browserstack.com/guide/read-data-from-excel-using-selenium
-
 public class ReadExcel {
 	public static void main(String[] args) throws IOException {
-//Path of the excel file
-		FileInputStream fs = new FileInputStream("TestData.xlsx");
-//Creating a workbook
+		// Path of the excel file
+		FileInputStream fs = new FileInputStream(Path
+				.of(System.getProperty("user.dir"), "src", "test", "resources", "testdata", "excel", "TestData.xlsx")
+				.toString());
+
+		// Creating a workbook
 		XSSFWorkbook workbook = new XSSFWorkbook(fs);
-		XSSFSheet sheet = workbook.getSheetAt(1); //0 based index
+		XSSFSheet sheet = workbook.getSheetAt(1); // 0 based index
 
-		Row row0 = sheet.getRow(0); // 0 based index
-		Cell cell = row0.getCell(1); // 0 based index
-		System.out.println(cell);  //[0][0]
-		System.out.println(sheet.getRow(0).getCell(1) + "\n"); //[0][1] RC
+		// Create a DataFormatter to format and get each cell's value as String
+		DataFormatter dataFormatter = new DataFormatter();
 
-		Row row1 = sheet.getRow(1);
-		Cell cell1 = row1.getCell(1);
-		System.out.println(cell1); // [1][1]
-		System.out.println(sheet.getRow(1).getCell(1) + "\n"); // [1][1] RC
-
-		Row row2 = sheet.getRow(2);
-		Cell cell2 = row2.getCell(1);
-		System.out.println(cell2); // [2][1]
-		System.out.println(sheet.getRow(2).getCell(1) + "\n"); // [2][1] RC
-
-		Row row3 = sheet.getRow(3);
-		Cell cell3 = row3.getCell(1);
-		System.out.println(cell3); // [2][1] RC
-		System.out.println(sheet.getRow(2).getCell(1) + "\n"); //[3][1] RC
-
-		
+		for (Row row : sheet) {
+			for (Cell cell : row) {
+				String cellValue = dataFormatter.formatCellValue(cell);
+				System.out.print(cellValue + "\t");
+			}
+			System.out.println();
+		}
 	}
 }
