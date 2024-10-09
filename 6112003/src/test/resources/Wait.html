@@ -17,6 +17,11 @@
 
 <body>
     <script>
+		
+		
+        function disableButtonByID(idOfElementToBeDisabled) {
+            document.getElementById(idOfElementToBeDisabled).disabled = true
+        }
 
 
         function dateNow(string) {
@@ -71,7 +76,8 @@
 
     <!-- <hr style="clear:both;"> -->
     <div>
-        <button id="Question_India" onclick="randomNumber1(5,10);">What is the capital
+        <button id="Question_India" onclick="disableButtonByID('Question_India');randomNumber1(5,10);">What is the
+            capital
             of India.<br>
             Click me to show answer. <br>It will take 5 to 10 seconds for answer button to appear
         </button>
@@ -81,7 +87,8 @@
         </hr>
 
 
-        <button id="Question_Japan" onclick="randomNumber2(10,15);" style="background:lightgreen;">What is the capital
+        <button id="Question_Japan" onclick="disableButtonByID('Question_Japan');randomNumber2(10,15);"
+            style="background:lightgreen;">What is the capital
             of
             Japan.<br>
             Click me to show answer. <br /> It will take 10 to 15 seconds for answer button to appear</button>
