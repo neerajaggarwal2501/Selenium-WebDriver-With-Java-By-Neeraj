@@ -1,5 +1,6 @@
 package demo.selectclassdemo;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +12,13 @@ import org.openqa.selenium.support.ui.Select;
 
 public class Select_DropDownDemo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		WebDriver driver = new ChromeDriver();
-		driver.get("file:///C:/Users/NeerajAggarwal/git/SeleniumYT/6112003/src/test/resources/DropDown.html");
+		Path application_path = Path.of(System.getProperty("user.dir"), "src", "test", "resources", "DropDown.html");
+
+		driver.get(application_path.toString());
+
 		
 		Select select = new Select(driver.findElement(By.id("cars")));
 		
@@ -39,7 +43,9 @@ public class Select_DropDownDemo {
 		
 		//5
 		select.selectByVisibleText("Mercedes");
-		
+
+		Thread.sleep(5000);
+		driver.quit();
 		
 	}
 	

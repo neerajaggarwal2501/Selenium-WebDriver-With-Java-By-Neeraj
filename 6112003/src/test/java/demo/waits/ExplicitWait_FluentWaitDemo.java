@@ -1,5 +1,6 @@
 package demo.waits;
 
+import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Date;
 
@@ -14,7 +15,7 @@ import org.openqa.selenium.support.ui.Wait;
 
 public class ExplicitWait_FluentWaitDemo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		WebDriver driver = new ChromeDriver();
 		
@@ -23,7 +24,10 @@ public class ExplicitWait_FluentWaitDemo {
 			       .pollingEvery(Duration.ofSeconds(1L))
 			       .ignoring(NoSuchElementException.class);
 		
-		driver.get("file:///C://Users//NeerajAggarwal//eclipse-workspace//6112003//src//test//resources//Wait.html");
+		Path application_path = Path.of(System.getProperty("user.dir"), "src", "test", "resources", "Wait.html");
+
+		driver.get(application_path.toString());
+
 		
 		//1
 		driver.findElement(By.id("Question_India")).click();
@@ -44,7 +48,8 @@ public class ExplicitWait_FluentWaitDemo {
 		
 		WebElement answer2 = driver.findElement(By.id("Answer_Japan_Tokyo"));
 		System.out.println(answer2.getText()); //
-		
-	}
 
+		Thread.sleep(5000);
+		driver.quit();
+	}
 }

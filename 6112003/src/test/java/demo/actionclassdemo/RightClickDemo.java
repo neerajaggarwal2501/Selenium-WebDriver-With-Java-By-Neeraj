@@ -1,5 +1,7 @@
 package demo.actionclassdemo;
 
+import java.nio.file.Path;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,15 +12,21 @@ public class RightClickDemo {
 
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = new ChromeDriver();
-		driver.get("file:///C:/Users/NeerajAggarwal/git/SeleniumYT/6112003/src/test/resources/RightClick.html");
-		
+
+		Path application_path = Path.of(System.getProperty("user.dir"), "src", "test", "resources", "RightClick.html");
+
+		driver.get(application_path.toString());
+
 		Actions actions = new Actions(driver);
-		
+
 		WebElement textBox = driver.findElement(By.xpath("//input"));
-		
+
 		Thread.sleep(2000);
-		
+
 		actions.contextClick(textBox).perform();
+
+		Thread.sleep(5000);
+		driver.quit();
 
 	}
 }

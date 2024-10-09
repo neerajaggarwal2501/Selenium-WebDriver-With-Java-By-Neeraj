@@ -1,5 +1,6 @@
 package demo.selectclassdemo;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,12 @@ import org.openqa.selenium.support.ui.Select;
 
 public class MultiSelectDropDownDemo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = new ChromeDriver();
-		driver.get("file:///C:/Users/NeerajAggarwal/git/SeleniumYT/6112003/src/test/resources/DropDown_MultiSelect.html");
+		Path application_path = Path.of(System.getProperty("user.dir"), "src", "test", "resources", "DropDown_MultiSelect.html");
+
+		driver.get(application_path.toString());
+
 		Select select = new Select(driver.findElement(By.id("cars")));
 		//selectByIndex
 		select.selectByIndex(0);
@@ -35,7 +39,9 @@ public class MultiSelectDropDownDemo {
 		//deselectAll
 		
 		select.deselectAll();
-		
+
+		Thread.sleep(5000);
+		driver.quit();
 	}
 
 }

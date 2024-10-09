@@ -1,4 +1,5 @@
 package demo.waits;
+import java.nio.file.Path;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -12,7 +13,9 @@ public class ImplicitWaitDemo {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
-		driver.get("file:///C:/Users/NeerajAggarwal/Desktop/Wait.html");
+		Path application_path = Path.of(System.getProperty("user.dir"), "src", "test", "resources", "Wait.html");
+
+		driver.get(application_path.toString());
 
 		driver.findElement(By.id("Question_India")).click();
 		System.out.println(driver.findElement(By.id("Answer_India_Delhi")).getText());

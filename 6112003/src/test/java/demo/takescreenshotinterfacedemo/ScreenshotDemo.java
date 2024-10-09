@@ -18,7 +18,10 @@ public class ScreenshotDemo {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		WebDriver driver = new ChromeDriver();
-		driver.get("file:///C:/Users/NeerajAggarwal/git/SeleniumYT/6112003/src/test/resources/DragAndDrop.html");
+		Path application_path = Path.of(System.getProperty("user.dir"), "src", "test", "resources", "DragAndDrop.html");
+
+		driver.get(application_path.toString());
+
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofMinutes(1));
 		
 		// Full Screenshot
@@ -42,7 +45,7 @@ public class ScreenshotDemo {
 		System.out.println("[WebElement] Destination Path :"  + destinationPath1);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		driver.quit();
 	}
 

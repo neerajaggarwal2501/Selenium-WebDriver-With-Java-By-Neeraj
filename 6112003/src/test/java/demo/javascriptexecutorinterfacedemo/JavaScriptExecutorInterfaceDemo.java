@@ -1,5 +1,7 @@
 package demo.javascriptexecutorinterfacedemo;
 
+import java.nio.file.Path;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -10,8 +12,10 @@ public class JavaScriptExecutorInterfaceDemo {
 
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = new ChromeDriver();
-		driver.get("file:///C:/Users/NeerajAggarwal/git/SeleniumYT/6112003/src/test/resources/Click.html");
-		
+		Path application_path = Path.of(System.getProperty("user.dir"), "src", "test", "resources", "Click.html");
+
+		driver.get(application_path.toString());
+
 		//Getting the JavaScript Executor
 		JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
 		
@@ -32,5 +36,9 @@ public class JavaScriptExecutorInterfaceDemo {
 		
 		//Perform Button click using JavaScriptExecutor
 		jsExecutor.executeScript("arguments[0].click();",button1);	// Call JSExecutor by passing multiple arguments
+		
+		Thread.sleep(5000);
+		driver.quit();
+		
 	}
 }

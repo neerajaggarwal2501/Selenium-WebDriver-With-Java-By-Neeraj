@@ -1,4 +1,5 @@
 package demo.waits;
+import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Date;
 
@@ -11,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ExplicitWait_WebDriverWaitDemo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		WebDriver driver = new ChromeDriver();
 		
@@ -19,7 +20,9 @@ public class ExplicitWait_WebDriverWaitDemo {
 		// 15 seconds specified here is the max waiting time. The actual waiting time is the time in which the specified condition is met.
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));   //---->Explicit Wait or WebDriverWait Line 1
 
-		driver.get("C:/Users/NeerajAggarwal/git/SeleniumYT/6112003/src/test/resources/Wait.html");
+		Path application_path = Path.of(System.getProperty("user.dir"), "src", "test", "resources", "Wait.html");
+
+		driver.get(application_path.toString());
 
 		Date d1 = new Date();
 		driver.findElement(By.id("Question_India")).click();
