@@ -18,7 +18,6 @@ public class KeyDownKeyUpSendkeysDemo {
 		driver.get(application_path.toString());
 
 		WebElement txtBox1 = driver.findElement(By.xpath("//input[@id='fruit1']"));
-		WebElement txtBox2 = driver.findElement(By.xpath("//input[@id='fruit2']"));
 		Actions actions = new Actions(driver);
 		// Ctrl + A
 		Thread.sleep(500);
