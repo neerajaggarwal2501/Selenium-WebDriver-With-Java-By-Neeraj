@@ -18,18 +18,22 @@ public class ReadExcel {
 				.toString());
 
 		// Creating a workbook
-		XSSFWorkbook workbook = new XSSFWorkbook(fs);
-		XSSFSheet sheet = workbook.getSheetAt(1); // 0 based index
+		try (XSSFWorkbook workbook = new XSSFWorkbook(fs)) {
+			XSSFSheet sheet = workbook.getSheetAt(1); // 0 based index
 
-		// Create a DataFormatter to format and get each cell's value as String
-		DataFormatter dataFormatter = new DataFormatter();
+			// Create a DataFormatter to format and get each cell's value as String
+			DataFormatter dataFormatter = new DataFormatter();
 
-		for (Row row : sheet) {
-			for (Cell cell : row) {
-				String cellValue = dataFormatter.formatCellValue(cell);
-				System.out.print(cellValue + "\t");
+			for (Row row : sheet) {
+				for (Cell cell : row) {
+					// Returns the formatted value of a cell as a String regardless of the cell
+					// type. If the Excel format pattern cannot be parsed then the cell value will
+					// be formatted using a default format.
+					String cellValue = dataFormatter.formatCellValue(cell);
+					System.out.print(cellValue + "\t");
+				}
+				System.out.println();
 			}
-			System.out.println();
 		}
 	}
 }
