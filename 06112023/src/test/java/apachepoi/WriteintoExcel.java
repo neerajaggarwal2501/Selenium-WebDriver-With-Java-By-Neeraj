@@ -13,19 +13,19 @@ public class WriteintoExcel {
 	public static void main(String[] args) throws IOException {
 		String path = "TestData.xlsx";
 		FileInputStream fs = new FileInputStream(path);
-		Workbook wb = new XSSFWorkbook(fs);
+		try (Workbook wb = new XSSFWorkbook(fs)) {
+			Sheet sheet1 = wb.getSheetAt(0); // 0 Based Index
+			int lastRow = sheet1.getLastRowNum(); // 0 based index. -1 if no row exists
+			for (int i = 0; i <= lastRow; i++) { // if row count is 1 =>Loop execution(0->0) || if row count is 2 => Loop execution 0->1  
+				Row row = sheet1.getRow(i);
+				Cell cell = row.createCell(2);
 
-		Sheet sheet1 = wb.getSheetAt(0); // 0 Based Index
-		int lastRow = sheet1.getLastRowNum(); // 0 based index. -1 if no row exists
-		for (int i = 0; i <= lastRow; i++) { // if row count is 1 =>Loop execution(0->0) || if row count is 2 => Loop execution 0->1  
-			Row row = sheet1.getRow(i);
-			Cell cell = row.createCell(2);
+				cell.setCellValue("WriteintoExcel");
 
-			cell.setCellValue("WriteintoExcel");
-
+			}
+			FileOutputStream fos = new FileOutputStream(path);
+			wb.write(fos);
+			fos.close();
 		}
-		FileOutputStream fos = new FileOutputStream(path);
-		wb.write(fos);
-		fos.close();
 	}
 }
