@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class ConnectToAlreadyRunningBrowser {
 
 	// Launch Chrome browser using below command to connect automation to this existing Chrome browser
-	// C:\Program Files\Google\Chrome\Application>chrome.exe --remote-debugging-port=9222 --user-data=d:\chromeData
+	// C:\Program Files\Google\Chrome\Application>chrome.exe --remote-debugging-port=9222 --user-data-dir=d:\chromeData
 	// C:\Program Files\Google\Chrome\Application>netstat -na | find "9222" |find "LISTENING"
 	// TCP 127.0.0.1:9222 0.0.0.0:0 LISTENING
 	// open google.com and observe that it's title is "Google"
