@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 public class LocationAccessPopup {
 
 	// doesn't show location access prompt C:\Program Files\Google\Chrome\Application>chrome --disable-notifications
+	// doesn't show location access prompt C:\Program Files (x86)\Microsoft\Edge\Application>msedge --disable-notifications
 	// --disable-notifications option is documented at https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md
 	// This is a chromium feature. Hence is applicable for both Chrome and Edge browsers.
 
@@ -20,7 +21,7 @@ public class LocationAccessPopup {
 		chromeOptions.addArguments("--disable-notifications");
 
 		WebDriver driver = new ChromeDriver(chromeOptions);
-		driver.get("https://www.spicejet.com/"); // Shows a PopUp which says that SpiceJet wants to access your location with options Access or Deny
+		driver.get("https://www.spicejet.com/"); 
 		Thread.sleep(6000);
 		driver.quit();
 	}
