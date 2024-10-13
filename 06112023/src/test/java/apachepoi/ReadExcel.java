@@ -12,11 +12,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadExcel {
 	public static void main(String[] args) throws IOException {
-		// Path of the excel file
-		FileInputStream fs = new FileInputStream(Path.of(System.getProperty("user.dir"), "src", "test", "resources", "testdata", "excel", "TestData.xlsx").toString());
+		// Open the Excel File in Java as a Stream
+		FileInputStream fis = new FileInputStream(Path.of(System.getProperty("user.dir"), "src", "test", "resources", "testdata", "excel", "TestData.xlsx").toString());
 
-		// Creating a workbook
-		try (XSSFWorkbook workbook = new XSSFWorkbook(fs)) {
+		try (XSSFWorkbook workbook = new XSSFWorkbook(fis)) {
+
 			XSSFSheet sheet = workbook.getSheet("read");
 
 			// Create a DataFormatter to format and get each cell's value as String
