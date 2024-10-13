@@ -34,7 +34,7 @@ public class ReadExcel {
 		}
 	}
 
-	public static String[][] excelDataProvider(String fileName, String sheetName) throws IOException {
+	public static String[][] excelDataProvider(String fileName, String sheetName, boolean skipHeaderRow) throws IOException {
 
 		// Placeholder to output
 
@@ -46,19 +46,23 @@ public class ReadExcel {
 		try (XSSFWorkbook workbook = new XSSFWorkbook(fis)) {
 
 			XSSFSheet sheet = workbook.getSheet(sheetName);
-			int rowCount = sheet.getLastRowNum() + 1;
+			int rowCount = sheet.getLastRowNum() + (skipHeaderRow ? 0 : 1);
 			int colCount = sheet.getRow(0).getLastCellNum();
+			// System.out.println("rowCount: " + rowCount);
+			// System.out.println("column Count: " + colCount);
 			dataArray = new String[rowCount][colCount];
 
 			// Create a DataFormatter to format and get each cell's value as String
 			DataFormatter dataFormatter = new DataFormatter();
 
 			for (Row row : sheet) {
+				if (skipHeaderRow && row.getRowNum() == 0)
+					continue;
 				for (Cell cell : row) {
 
 					String cellValue = dataFormatter.formatCellValue(cell); // Returns the formatted value of a cell as a String regardless of the cell type.
 																			// If the Excel format pattern cannot be parsed then the cell value will be formatted using a default format.
-					dataArray[row.getRowNum()][cell.getAddress().getColumn()] = cellValue;
+					dataArray[row.getRowNum() - (skipHeaderRow ? 1 : 0)][cell.getAddress().getColumn()] = cellValue;
 				}
 				System.out.println();
 			}
