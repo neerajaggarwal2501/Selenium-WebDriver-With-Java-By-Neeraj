@@ -23,27 +23,26 @@ public class ScreenshotDemo {
 		driver.get(application_path.toString());
 
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofMinutes(1));
-		
+
 		// Full Screenshot
 		File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		Path sourcePath = screenshotFile.toPath();
-		Path destinationPath = Paths.get(System.getProperty("user.dir"),"screenshots",screenshotFile.getName());
-		Files.copy(sourcePath, destinationPath);
+		Path destinationPath = Paths.get(System.getProperty("user.dir"), "screenshots", screenshotFile.getName());
 
-		System.out.println("[Full Page] Source Path      :"  + sourcePath);
-		System.out.println("[Full Page] Destination Path :"  + destinationPath);
-		
+		System.out.println("[Full Page] Source Path      :" + sourcePath);
+		System.out.println("[Full Page] Destination Path :" + destinationPath);
+
+		Files.copy(sourcePath, destinationPath);
 
 		// Screenshot of a WebElement - button1
 		WebElement button_Apple = driver.findElement(By.id("Source_Apple"));
 		File screenshotFile1 = ((TakesScreenshot) button_Apple).getScreenshotAs(OutputType.FILE);
 		Path sourcePath1 = screenshotFile1.toPath();
-		Path destinationPath1 = Paths.get(System.getProperty("user.dir"),"screenshots",screenshotFile1.getName());
+		Path destinationPath1 = Paths.get(System.getProperty("user.dir"), "screenshots", screenshotFile1.getName());
 		Files.copy(sourcePath1, destinationPath1);
 
-		System.out.println("[WebElement] Source Path      :"  + sourcePath1);
-		System.out.println("[WebElement] Destination Path :"  + destinationPath1);
-
+		System.out.println("[WebElement] Source Path      :" + sourcePath1);
+		System.out.println("[WebElement] Destination Path :" + destinationPath1);
 
 		Thread.sleep(5000);
 		driver.quit();
