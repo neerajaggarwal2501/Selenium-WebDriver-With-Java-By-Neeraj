@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.testng.annotations.Test;
 
-public class FilterArrayListUsingStreamsAndLambdaFunction {
+public class StreamsAndLambdaFunctions1 {
 
 	// https://www.oracle.com/technical-resources/articles/java/ma14-java-se-8-streams.html
 
@@ -21,10 +21,10 @@ public class FilterArrayListUsingStreamsAndLambdaFunction {
 		names.add("John");
 		names.add("Ashu");
 
-		// Approach 1
+		// e.g. with lambda function of 1 line
 		long count1 = names.stream().filter(name -> name.startsWith("A")).count(); // No impact on names. count is executed in the end
 
-		// Approach 2
+		// e.g. with lambda function having more than 1 line
 		long count2 = names.stream().filter(name -> {
 			if (name.startsWith("A"))
 				return true;
