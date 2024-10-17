@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sort a HTML Table Alphabetically</title>
+<style>
+table {
+  border-spacing: 30;
+  width: 50%;
+  border: 3px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+</style>
+</head>
+<body>
+
+<p><strong>Click the headers to sort the table.</strong></p>
+<p>The first time you click the table header, the sorting direction is ascending (A to Z).</p>
+<p>Click again, to sort in descending order (Z to A):</p>
+
+<table id="myTable">
+  <tr>
+   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+    <th onclick="sortTable(0)">Country</th>
+    <th onclick="sortTable(1)">Capital</th>
+  </tr>
+  <tr>
+    <td>India</td>
+    <td>New Delhi</td>
+  </tr>
+  <tr>
+    <td>Japan</td>
+    <td>Tokyo</td>
+  </tr>
+  <tr>
+    <td>Canada</td>
+    <td>Ottawa</td>
+  </tr>
+  <tr>
+    <td>USA</td>
+    <td>Washington DC</td>
+  </tr>
+  <tr>
+    <td>France</td>
+    <td>Paris</td>
+  </tr>  
+</table>
+
+<br><br>  NOTE: Thanks to w3schools. This Page is built by referring to tutorial  https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_desc<br>
+
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  dir = "asc"; 
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      switchcount ++;      
+    } else {
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
