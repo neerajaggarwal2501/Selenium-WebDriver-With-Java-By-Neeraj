@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 import org.testng.annotations.Test;
 
-public class CollectAndLimitAStream {
+public class LimitAndCollectAStream {
 
 	@Test
 	public void tc001() {
