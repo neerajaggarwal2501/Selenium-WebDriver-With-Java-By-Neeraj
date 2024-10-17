@@ -33,7 +33,7 @@ public class Program2_ValidateThatTableIsSortedUsingStreams {
 		List<String> expectedListOfCountries = actualListOfCountries.stream().sorted().toList();
 		Assert.assertEquals(actualListOfCountries, expectedListOfCountries);
 
-		// 2 Print the Capital of Canada
+		// 2 Print the Capital of India
 		countriesList.stream().filter(s -> s.getText().equals("India")).map(s -> getCapital(s)).forEach(s -> System.out.println(s));// New Delhi
 
 		driver.quit();
